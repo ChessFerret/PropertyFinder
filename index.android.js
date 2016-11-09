@@ -30,12 +30,6 @@ class PropertyFinderApp extends Component {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    color: 'black',
-    backgroundColor: 'white',
-    fontSize: 30,
-    margin: 80,
-  },
   container: {
     flex: 1,
   }
