@@ -9,12 +9,31 @@ import {
   Image
 } from 'react-native';
 
+function urlForQueryAndPage(key, value, pageNumber) {
+  var data = {
+      country: 'uk',
+      pretty: '1',
+      encoding: 'json',
+      listing_type: 'buy',
+      action: 'search_listings',
+      page: pageNumber
+  };
+  data[key] = value;
+
+  var querystring = Object.keys(data)
+    .map(key => key + '=' + encodeURIComponent(data[key]))
+    .join('&');
+
+  return 'http://api.nestoria.co.uk/api?' + querystring;
+};
+
 export default class SearchPage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      searchString: 'london'
+      searchString: 'london',
+      isLoading: false
     };
   }
   // THIS IS OLDSCOOL TEXT INPUT
@@ -31,6 +50,10 @@ export default class SearchPage extends Component {
 
   render() {
     // console.log('SearchPage.render');
+    var spinner = this.state.isLoading ?
+      ( <ActivityIndicator
+          size='large'/> ) :
+      ( <View/>);
     return (
       <View style={styles.container}>
           <Text style={styles.description}>
@@ -52,7 +75,8 @@ export default class SearchPage extends Component {
                 }
                 placeholder='Search via name or postcode'/>
               <TouchableHighlight style={styles.button}
-                  underlayColor='#99d9f4'>
+                  underlayColor='#99d9f4'
+                  onPress={() => this.onSearchPressed()}>
                 <Text style={styles.buttonText}>Go</Text>
               </TouchableHighlight>
           </View>
@@ -61,9 +85,21 @@ export default class SearchPage extends Component {
               <Text style={styles.buttonText}>Location</Text>
           </TouchableHighlight>
           <Image source={require('./Resources/house.png')} style={styles.image}/>
+          {spinner}
       </View>
     );
   }
+
+  _executeQuery(query) {
+    console.log(query);
+    this.setState({ isLoading: true });
+  }
+
+  onSearchPressed() {
+    var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
+    this._executeQuery(query);
+  }
+
 }
 
 var styles = StyleSheet.create({
