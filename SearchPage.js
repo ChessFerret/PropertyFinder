@@ -8,6 +8,8 @@ import {
   ActivityIndicator,
   Image
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import SearchResults from './SearchResults';
 
 function urlForQueryAndPage(key, value, pageNumber) {
   var data = {
@@ -114,7 +116,8 @@ export default class SearchPage extends Component {
     this.setState({ isLoading: false , message: '' });
     //response code of this API
     if (response.application_response_code.substr(0, 1) === '1') {
-      console.log('Properties found: ' + response.listings.length);
+      //console.log('Properties found: ' + response.listings.length);
+      Actions.searchResults({listings: response.listings});
     } else {
       this.setState({ message: 'Location not recognized; please try again.'});
     }
