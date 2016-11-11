@@ -6,11 +6,7 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  Navigator,
-  StyleSheet,
-  Text,
-  View
+  AppRegistry
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import SearchPage from './SearchPage';
