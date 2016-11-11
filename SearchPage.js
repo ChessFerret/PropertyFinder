@@ -100,7 +100,7 @@ export default class SearchPage extends Component {
   }
 
   _executeQuery(query) {
-    console.log(query);
+    //console.log(query);
     this.setState({ isLoading: true });
     fetch(query)
       .then(response => response.json())

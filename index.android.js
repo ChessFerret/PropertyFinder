@@ -15,6 +15,7 @@ import {
 import { Router, Scene } from 'react-native-router-flux';
 import SearchPage from './SearchPage';
 import SearchResults from './SearchResults';
+import PropertyView from './PropertyView';
 
 class PropertyFinderApp extends Component {
   render() {
@@ -24,6 +25,7 @@ class PropertyFinderApp extends Component {
           <Scene key="searchPage" component={SearchPage} title="Property Finder"
                   initial={true} />
           <Scene key="searchResults" component={SearchResults} title="Results"/>
+          <Scene key="propertyView" component={PropertyView} title="Property"/>
 
         </Scene>
       </Router>

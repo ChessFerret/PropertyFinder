@@ -7,6 +7,9 @@ import {
   ListView,
   Text
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import PropertyView from './PropertyView'
+
 
 export default class SearchResults extends Component {
 
@@ -42,6 +45,7 @@ export default class SearchResults extends Component {
 
   rowPressed(listerURL) {
     var property = this.props.listings.filter(prop => prop.lister_url === listerURL)[0];
+    Actions.propertyView({property: property});
   }
 
   render() {
