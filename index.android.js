@@ -20,27 +20,15 @@ class PropertyFinderApp extends Component {
   render() {
     return (
       <Router>
-        <Scene key="root" hideNavBar={true}>
-          <Scene key="searchPage" component={SearchPage} initial={true} />
-          <Scene key="searchResults" component={SearchResults}
-             hideNavBar={false}
-             navigationBarStyle={
-               {
-                 backgroundColor:'transparent',
-                 borderBottomWidth: 0,
-               }
-             }/>
+        <Scene key="root">
+          <Scene key="searchPage" component={SearchPage} title="Property Finder"
+                  initial={true} />
+          <Scene key="searchResults" component={SearchResults} title="Results"/>
 
         </Scene>
       </Router>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//   }
-// });
 
 AppRegistry.registerComponent('PropertyFinder', () => PropertyFinderApp);

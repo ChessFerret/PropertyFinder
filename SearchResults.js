@@ -46,7 +46,7 @@ export default class SearchResults extends Component {
 
   render() {
     return (
-      <ListView
+      <ListView style={styles.listView}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}/>
     );
@@ -55,6 +55,9 @@ export default class SearchResults extends Component {
 }
 
 var styles = StyleSheet.create({
+  listView: {
+    marginTop: 54,
+  },
   thumb: {
     width: 80,
     height: 80,
